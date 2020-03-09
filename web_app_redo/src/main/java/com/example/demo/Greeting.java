@@ -2,7 +2,7 @@ package com.example.demo;
 
 public class Greeting {
     private final long id;
-    private final String content;
+    private String content;
 
     public Greeting(long id, String content){
         this.id = id;
@@ -15,5 +15,9 @@ public class Greeting {
 
     public String getContent(){
         return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
