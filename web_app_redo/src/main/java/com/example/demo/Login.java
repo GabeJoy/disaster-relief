@@ -1,10 +1,10 @@
 package com.example.demo;
 
-public class Greeting {
+public class Login {
     private final long id;
     private String content;
 
-    public Greeting(long id, String content){
+    public Login(long id, String content){
         this.id = id;
         this.content = content;
     }
