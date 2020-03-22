@@ -1,23 +1,29 @@
 package com.example.demo;
 
 public class Login {
-    private final long id;
-    private String content;
+    private String user;
+    private String pass;
 
-    public Login(long id, String content){
-        this.id = id;
-        this.content = content;
+    public Login(String user, String pass){
+        this.user = user;
+        this.pass = pass;
     }
 
-    public long getId(){
-        return id;
+    public Login(){}
+
+    public String getUser(){
+        return user;
     }
 
-    public String getContent(){
-        return content;
+    public String getPass(){
+        return pass;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setUser(String user){
+        this.user = user;
+    }
+
+    public void setPass(String pass){
+        this.pass = pass;
     }
 }
