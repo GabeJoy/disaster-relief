@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"-->
-<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">-->
 
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <head>
-    <title>Disaster Relief </title>
-<!--    <link href="/css/login.css" rel="stylesheet" type="text/css"/>-->
+    <title>Disaster relief </title>
     <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
-<!--    href="https://fonts.googleapis.com/css?family=Roboto&display=swap">-->
+          href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
 </head>
 <style>
     body{
@@ -72,13 +71,13 @@ Please login with your username, password, and account tier:
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-<form modelattribute="login" th:action="@{/login}" method="post">
-    <div class="container"><label> User name: <input type="text" name="username"/> </label></div>
-    <div class="container"><label> Password: <input type="password" name="password"/> </label></div>
+<form:form modelattribute="login" method="post">
+    <div class="container"><label> User name: <form:input type="text" name="username" path="user"/> </label></div>
+    <div class="container"><label> Password: <form:input type="password" name="password" path="pass"/> </label></div>
     <div1><label><input type="radio" id="administrator" name="account_type" value="administrator">Administrator</label></div1>
     <div1><label><input type="radio" id="donor" name="account_type" value="donor"> Donor</label></div1>
     <div1><label><input type="radio" id="recipient" name="account_type" value="recipient"> Recipient</label></div1>
     <input type="submit" value="Sign In"/>
-</form>
+</form:form>
 </body>
 </html>
