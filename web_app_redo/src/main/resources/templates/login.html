@@ -72,9 +72,12 @@ Please login with your username, password, and account tier:
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-<form modelattribute="login" th:action="@{/login}" method="post">
-    <div class="container"><label> User name: <input type="text" name="username"/> </label></div>
-    <div class="container"><label> Password: <input type="password" name="password"/> </label></div>
+<!--<form th:modelAttribute="login" method="post">-->
+<form th:object="${login}" th:method="post">
+    <div class="container"><label> User name: <input type="text" th:field="*{user}"/> </label></div>
+    <div class="container"><label> Password: <input input type="text" th:field="*{pass}"/> </label></div>
+<!--    <div class="container"><label> User name: <input name="username" th:path="user" type="text"/> </label></div>-->
+<!--    <div class="container"><label> Password: <input type="password" name="password" th:path="pass"/> </label></div>-->
     <div1><label><input type="radio" id="administrator" name="account_type" value="administrator">Administrator</label></div1>
     <div1><label><input type="radio" id="donor" name="account_type" value="donor"> Donor</label></div1>
     <div1><label><input type="radio" id="recipient" name="account_type" value="recipient"> Recipient</label></div1>

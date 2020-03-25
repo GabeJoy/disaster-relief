@@ -11,7 +11,7 @@
 </head>
 <style>
     body{
-        background-color: lightslategray;
+        background-color: white;
         font-family: 'Varela', sans-serif;
         font-size: 40px;
     }

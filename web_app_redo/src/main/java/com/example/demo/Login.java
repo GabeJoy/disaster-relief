@@ -1,6 +1,12 @@
 package com.example.demo;
 
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+
+//@Entity
 public class Login {
+    //@Id
+    private String id;
     private String user;
     private String pass;
     private String tier;
@@ -13,6 +19,7 @@ public class Login {
 
     public Login(){}
 
+    //getters
     public String getUser(){
         return user;
     }
@@ -23,6 +30,11 @@ public class Login {
 
     public String getTier(){return tier;}
 
+    public String getId() {
+        return id;
+    }
+
+    //setters
     public void setUser(String user){
         this.user = user;
     }
@@ -32,4 +44,8 @@ public class Login {
     }
 
     public void setTier(String tier) {this.tier = tier;}
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

@@ -8,15 +8,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class LoginController {
 
-    @RequestMapping(method=RequestMethod.GET)
+    @GetMapping(value="/")
     public String getForm(Model model){
-        Login login = new Login();
-        model.addAttribute("user", login);
+        model.addAttribute("login", new Login());
         return "login";
     }
 
-    @RequestMapping(value = "/login", method=RequestMethod.GET)
-    public String authenticate(){
+    @PostMapping(value = "/")
+    public String authenticate(@ModelAttribute Login login){
+        System.out.println(login.getUser() + " " + login.getPass());
+        return "home";
+    }
+
+    @GetMapping(value = "/login")
+    public String getHome(){
         return "home";
     }
 }
