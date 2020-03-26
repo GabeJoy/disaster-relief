@@ -20,16 +20,16 @@
 //@EnableWebSecurity
 //public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 //
-//    @Autowired
-//    private UserDetailsServiceConfig userDetailsService;
-//
-//    @Bean
-//    public AuthenticationProvider authenticationProvider(){
-//        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-//        provider.setUserDetailsService(userDetailsService);
-//        provider.setPasswordEncoder(new BCryptPasswordEncoder());
-//        return provider;
-//    }
+////    @Autowired
+////    private UserDetailsServiceConfig userDetailsService;
+////
+////    @Bean
+////    public AuthenticationProvider authenticationProvider(){
+////        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+////        provider.setUserDetailsService(userDetailsService);
+////        provider.setPasswordEncoder(new BCryptPasswordEncoder());
+////        return provider;
+////    }
 //
 //    @Override
 //    protected void configure(final HttpSecurity http) throws Exception {
@@ -45,21 +45,4 @@
 //                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 //                .logoutSuccessUrl("/logout-success").permitAll();
 //    }
-////    @Bean
-////    @Override
-////    public UserDetailsService userDetailsService() {
-////        UserDetails user =
-////                User.withDefaultPasswordEncoder()
-////                        .username("user")
-////                        .password("password")
-////                        .roles("USER")
-////                        .build();
-////
-////        return new InMemoryUserDetailsManager(user);
-////    }
-//
-//
-////    public PasswordEncoder passwordEncoder() {
-////        return new BCryptPasswordEncoder();
-////    }
 //}

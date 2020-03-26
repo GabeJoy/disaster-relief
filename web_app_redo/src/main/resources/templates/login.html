@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"-->
-<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">-->
-
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Disaster Relief </title>
-<!--    <link href="/css/login.css" rel="stylesheet" type="text/css"/>-->
-    <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
-<!--    href="https://fonts.googleapis.com/css?family=Roboto&display=swap">-->
+    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
 </head>
 <style>
     body{
@@ -75,12 +70,10 @@ Please login with your username, password, and account tier:
 <!--<form th:modelAttribute="login" method="post">-->
 <form th:object="${login}" th:method="post">
     <div class="container"><label> User name: <input type="text" th:field="*{user}"/> </label></div>
-    <div class="container"><label> Password: <input input type="text" th:field="*{pass}"/> </label></div>
-<!--    <div class="container"><label> User name: <input name="username" th:path="user" type="text"/> </label></div>-->
-<!--    <div class="container"><label> Password: <input type="password" name="password" th:path="pass"/> </label></div>-->
-    <div1><label><input type="radio" id="administrator" name="account_type" value="administrator">Administrator</label></div1>
-    <div1><label><input type="radio" id="donor" name="account_type" value="donor"> Donor</label></div1>
-    <div1><label><input type="radio" id="recipient" name="account_type" value="recipient"> Recipient</label></div1>
+    <div class="container"><label> Password: <input type="password" th:field="*{pass}"/> </label></div>
+    <div1><label><input type="radio" value="Administrator" name="tier" th:path="*{tier}">Administrator</label></div1>
+    <div1><label><input type="radio" value="Donor" name="tier" th:path="*{tier}"> Donor</label></div1>
+    <div1><label><input type="radio" value="Recipient" name="tier"th:path="*{tier}"> Recipient</label></div1>
     <input type="submit" value="Sign In"/>
 </form>
 </body>
