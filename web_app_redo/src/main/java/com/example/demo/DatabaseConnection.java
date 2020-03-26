@@ -1,4 +1,5 @@
 package com.example.demo;
+import javax.xml.transform.Result;
 import java.sql.*;
 
 public class DatabaseConnection {
@@ -8,6 +9,13 @@ public class DatabaseConnection {
         String username = "postgres";
         String password = "postgres";
         return DriverManager.getConnection(url, username, password);
+    }
+
+    public static ResultSet executeQuery(String query) throws SQLException {
+        Connection db = DatabaseConnection.getConnection();
+        db.prepareStatement(query);
+        Statement statement = db.createStatement();
+        return statement.executeQuery(query);
     }
 
     public static void printResultSet(ResultSet results) throws SQLException {
@@ -21,6 +29,10 @@ public class DatabaseConnection {
             }
             System.out.println("");
         }
+    }
+
+    public static boolean isEmptySet(ResultSet results) throws SQLException {
+        return (!results.isBeforeFirst() && results.getRow() == 0);
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {

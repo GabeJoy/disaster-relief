@@ -72,7 +72,7 @@ Please login with your username, password, and account tier:
     You have been logged out.
 </div>
 <form:form modelattribute="login" method="post">
-    <div class="container"><label> User name: <form:input type="text" name="username" path="user"/> </label></div>
+    <div class="container"><label> User name: <form:input type="text" name="username" path="login"/> </label></div>
     <div class="container"><label> Password: <form:input type="password" name="password" path="pass"/> </label></div>
     <div1><label><input type="radio" id="administrator" name="account_type" value="administrator">Administrator</label></div1>
     <div1><label><input type="radio" id="donor" name="account_type" value="donor"> Donor</label></div1>

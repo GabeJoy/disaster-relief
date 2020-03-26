@@ -4,10 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 @Controller
 @RequestMapping("/user")
@@ -34,15 +32,32 @@ public class LoginController {
         return "home";
     }
 
+    @GetMapping(value = "/newuser")
+    public String getNewUser(Model model){
+        model.addAttribute("user", new User());
+        return "newuser";
+    }
+
+    @PostMapping(value = "/newuser")
+    public String addNewUser(@ModelAttribute User user, @RequestParam("tier") String tier) throws SQLException {
+        user.setTier(tier);
+
+        String query = String.format("SELECT * FROM users WHERE username = '{%s}'", user.getUser());
+        ResultSet results = DatabaseConnection.executeQuery(query);
+        boolean added = DatabaseConnection.isEmptySet(results);
+
+        if (added){
+            query = String.format("INSERT INTO accounts (\"first\", \"last\", \"username\", \"password\", \"tier\", \"email\") VALUES ('{%s}', '{%s}', '{%s}', '{%s}', '{%s}', '{%s}')",user.getFirst(), user.getLast(), user.getUser(), user.getPass(), user.getTier(), user.getEmail());
+            DatabaseConnection.executeQuery(query);
+            return "login";
+        } else {
+            return "login-error";
+        }
+    }
+
     private boolean authenticateUser(Login login) throws SQLException {
         String query = String.format("SELECT * FROM users WHERE username = '{%s}' AND password = '{%s}' AND tier = '{%s}';", login.getUser(), login.getPass(), login.getTier());
-        System.out.println(query);
-        Connection db = DatabaseConnection.getConnection();
-        db.prepareStatement(query);
-        Statement statement = db.createStatement();
-        ResultSet results = statement.executeQuery(query);
-
-        //if true, the result set isnt empty and user exists
-        return !(!results.isBeforeFirst() && results.getRow() == 0);
+        ResultSet results = DatabaseConnection.executeQuery(query);
+        return !DatabaseConnection.isEmptySet(results); //if true, the result set isn't empty and user exists
     }
 }
