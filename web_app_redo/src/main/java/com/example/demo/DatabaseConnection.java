@@ -1,5 +1,4 @@
 package com.example.demo;
-import javax.xml.transform.Result;
 import java.sql.*;
 
 public class DatabaseConnection {
@@ -16,6 +15,13 @@ public class DatabaseConnection {
         db.prepareStatement(query);
         Statement statement = db.createStatement();
         return statement.executeQuery(query);
+    }
+
+    public static void executeUpdate(String query) throws SQLException {
+        Connection db = DatabaseConnection.getConnection();
+        db.prepareStatement(query);
+        Statement statement = db.createStatement();
+        statement.executeUpdate(query);
     }
 
     public static void printResultSet(ResultSet results) throws SQLException {
