@@ -42,14 +42,16 @@ public class LoginController {
     public String addNewUser(@ModelAttribute User user, @RequestParam("tier") String tier) throws SQLException {
         user.setTier(tier);
 
+        //check if the username already exists
         String query = String.format("SELECT * FROM users WHERE username = '{%s}'", user.getUser());
         ResultSet results = DatabaseConnection.executeQuery(query);
-        boolean added = DatabaseConnection.isEmptySet(results);
+        boolean goodUser = DatabaseConnection.isEmptySet(results);
 
-        if (added){
+        //is its a good username, insert new user into accounts
+        if (goodUser){
             query = String.format("INSERT INTO accounts (\"first\", \"last\", \"username\", \"password\", \"tier\", \"email\") VALUES ('{%s}', '{%s}', '{%s}', '{%s}', '{%s}', '{%s}')",user.getFirst(), user.getLast(), user.getUser(), user.getPass(), user.getTier(), user.getEmail());
             DatabaseConnection.executeQuery(query);
-            return "login";
+            return "home";
         } else {
             return "login-error";
         }
