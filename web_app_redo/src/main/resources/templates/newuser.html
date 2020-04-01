@@ -6,25 +6,7 @@
     <link href="/css/login.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
 </head>
-<!--Make sure all fields are entered and passwords match-->
-<script type="text/javascript">
-    function checkFields(form){
-        if (form.first.value === '' || form.last.value === '' || form.user.value === '' || form.password1.value === '' || form.password2.value === '' || form.email.value === ''){
-            alert("Required field missing!");
-            return false;
-        } else {
-            return true;
-        }
-    }
-    function checkPasswords(form){
-        if ((form.password1.value !== form.password2.value)){
-            alert("Passwords don't match!");
-            return false;
-        } else {
-            return true;
-        }
-    }
-</script>
+<script src = "/js/newuser.js"></script>
 <body>
 Please enter the following information to create a new account:
 <form th:object="${user}" th:method="post" th:onsubmit="return checkFields(this) && checkPasswords(this)">
