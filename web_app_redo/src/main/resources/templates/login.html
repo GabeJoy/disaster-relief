@@ -8,12 +8,20 @@
 <body>
 Please login with your username, password, and account tier:
 <form th:object="${login}" th:method="post">
-    <div class="container"><label> User name: <input type="text" th:field="*{user}"/> </label></div>
+    <div class="container"><label> User name: <input type="text" th:field="*{user}"/></label></div>
     <div class="container"><label> Password: <input type="password" th:field="*{pass}"/> </label></div>
-    <div><label><input type="radio" value="Administrator" name="tier" th:path="*{tier}">Administrator</label></div>
-    <div><label><input type="radio" value="Call Center Operator" name="tier"th:path="*{tier}"> Call Center Operator</label></div>
-    <div><label><input type="radio" value="Donor" name="tier" th:path="*{tier}"> Donor</label></div>
-    <div><label><input type="radio" value="Recipient" name="tier" th:path="*{tier}"> Recipient</label></div>
+
+    <label for="tier"> Tier: </label>
+    <select name="tier" id="tier" th:required th:path="*{tier}">
+        <option value="Administrator" th:path="*{tier}">Administrator</option>
+        <option value="Call Center Operator" th:path="*{tier}">Call Center Operator</option>
+        <option value="Donor" th:path="*{tier}">Donor</option>
+        <option value="Recipient" th:path="*{tier}">Recipient</option>
+    </select>
+<!--    <div><label><input type="radio" value="Administrator" name="tier" th:path="*{tier}">Administrator</label></div>-->
+<!--    <div><label><input type="radio" value="Call Center Operator" name="tier"th:path="*{tier}"> Call Center Operator</label></div>-->
+<!--    <div><label><input type="radio" value="Donor" name="tier" th:path="*{tier}"> Donor</label></div>-->
+<!--    <div><label><input type="radio" value="Recipient" name="tier" th:path="*{tier}"> Recipient</label></div>-->
     <input type="submit" value="Sign In"/>
 </form>
 </body>

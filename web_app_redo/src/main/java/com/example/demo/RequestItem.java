@@ -23,6 +23,8 @@ public class RequestItem {
         this.expired = expired;
     }
 
+    public RequestItem(){}
+
     //getters and setters
 
     public String getItem_name() {

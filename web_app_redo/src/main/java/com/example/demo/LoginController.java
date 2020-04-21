@@ -47,7 +47,7 @@ public class LoginController {
         ResultSet results = DatabaseConnection.executeQuery(query);
         boolean goodUser = DatabaseConnection.isEmptySet(results);
 
-        //is its a good username, insert new user into accounts
+        //if its a good username, insert new user into accounts
         if (goodUser){
             query = String.format("INSERT INTO accounts (\"first\", \"last\", \"username\", \"password\", \"tier\", \"email\") VALUES ('{%s}', '{%s}', '{%s}', '{%s}', '{%s}', '{%s}')",user.getFirst(), user.getLast(), user.getUser(), user.getPass(), user.getTier(), user.getEmail());
             DatabaseConnection.executeUpdate(query);

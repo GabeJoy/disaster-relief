@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
+</head>
+<!--<script src = "/js/newuser.js"></script>-->
+<body>
+Let us know what you need:
+<form th:object="${request_item}" th:method="post">
+    <label> Item: <input type="text" name="item" th:field="*{item_name}" th:required/> </label>
+    <label for="quantity"> Quantity </label>
+    <select id="quantity" th:required>
+        <option value="100-250">100-250</option>
+        <option value="250-500">250-500</option>
+        <option value="500-750">500-750</option>
+        <option value="750-1000">750-1000</option>
+        <option value="1000+">1000+</option>
+    </select>
+<!--    <label> Quantity: <input type="text" name="quantity" th:field="*{amount_needed}" th:required/> </label>-->
+    <label> Reason: <input type="text" name="reason" th:field="*{reason_needed}" th:required th:maxlength="30"/> </label>
+    <br><input type="submit" value="Submit Request"/>
+</form>
+</body>
+</html>
