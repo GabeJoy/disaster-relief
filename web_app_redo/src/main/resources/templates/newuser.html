@@ -16,9 +16,15 @@ Please enter the following information to create a new account:
     <div class="container"><label> Password: <input type="password" name="password1" id="password1" th:field="*{pass}" th:required/> </label></div>
     <div class="container"><label> Reenter Password: <input type="password" name="password2" id="password2" th:required/> </label></div>
     <div class="container"><label> Email: <input type="text" name="email" th:field="*{email}" th:required/> </label></div>
-    <div1><label><input type="radio" value="Call Center Operator" name="tier" th:path="*{tier}"> Call Center Operator</label></div1>
-    <div1><label><input type="radio" value="Donor" name="tier" th:path="*{tier}"> Donor</label></div1>
-    <div1><label><input type="radio" value="Recipient" name="tier" th:path="*{tier}"> Recipient</label></div1>
+<!--    <div1><label><input type="radio" value="Call Center Operator" name="tier" th:path="*{tier}"> Call Center Operator</label></div1>-->
+<!--    <div1><label><input type="radio" value="Donor" name="tier" th:path="*{tier}"> Donor</label></div1>-->
+<!--    <div1><label><input type="radio" value="Recipient" name="tier" th:path="*{tier}"> Recipient</label></div1>-->
+    <label for="tier"> Tier: </label>
+    <select name="tier" id="tier" th:required th:path="*{tier}">
+        <option value="Call Center Operator" th:path="*{tier}">Call Center Operator</option>
+        <option value="Donor" th:path="*{tier}">Donor</option>
+        <option value="Recipient" th:path="*{tier}">Recipient</option>
+    </select>
     <br><input type="submit" value="Create Account"/>
 </form>
 </body>

@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Controller
-@RequestMapping({"/user", "/"})
+@RequestMapping({"/", "/user"})
 public class LoginController {
 
     @GetMapping(value="/login")

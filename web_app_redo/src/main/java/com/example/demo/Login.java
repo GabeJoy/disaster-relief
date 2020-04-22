@@ -1,21 +1,25 @@
 package com.example.demo;
+import javax.persistence.*;
 
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
-
-//@Entity
+@Entity
+@Table(name = "users")
 public class Login {
-    //@Id
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+    @Column(name="username")
     private String username;
-    private String pass;
+    @Column(name="password")
+    private String password;
+    @Column(name="tier")
     private String tier;
 
-    public Login(String user, String pass, String tier){
-        this.username = user;
-        this.pass = pass;
-        this.tier = tier;
-    }
+//    public Login(String user, String pass, String tier){
+//        this.username = user;
+//        this.pass = pass;
+//        this.tier = tier;
+//    }
 
     public Login(){}
 
@@ -25,7 +29,7 @@ public class Login {
     }
 
     public String getPass(){
-        return pass;
+        return password;
     }
 
     public String getTier(){return tier;}
@@ -40,7 +44,7 @@ public class Login {
     }
 
     public void setPass(String pass){
-        this.pass = pass;
+        this.password = pass;
     }
 
     public void setTier(String tier) {this.tier = tier;}
