@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>New User</title>
-    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
 </head>
-<script src = "/js/newuser.js"></script>
+<script src = "/static/js/newuser.js"></script>
 <body>
 Please enter the following information to create a new account:
 <form th:object="${user}" th:method="post" th:onsubmit="return checkFields(this) && checkPasswords(this)">

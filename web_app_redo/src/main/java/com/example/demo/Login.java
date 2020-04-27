@@ -14,6 +14,8 @@ public class Login {
     private String password;
     @Column(name="tier")
     private String tier;
+    @Column(name="email")
+    private String email;
 
 //    public Login(String user, String pass, String tier){
 //        this.username = user;
@@ -51,5 +53,13 @@ public class Login {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

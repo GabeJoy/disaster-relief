@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>New User</title>
-    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
 </head>
 <!--<script src = "/js/newuser.js"></script>-->
@@ -21,6 +21,9 @@ Let us know what you need:
     </select>
     <label> Reason: <input type="text" name="reason" th:field="*{reason_needed}" th:required th:maxlength="30"/> </label>
     <br><input type="submit" value="Submit Request"/>
+</form>
+<form th:action = "@{/logout}" method = "post">
+    <input type = "submit" value = "Sign Out"/>
 </form>
 </body>
 </html>

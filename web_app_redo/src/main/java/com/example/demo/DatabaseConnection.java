@@ -1,4 +1,6 @@
 package com.example.demo;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import java.sql.*;
 
 public class DatabaseConnection {
@@ -42,13 +44,14 @@ public class DatabaseConnection {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        String query = "SELECT * FROM users WHERE username = '{joe}' AND password = '{pass}' AND tier = '{Administrator}';";
-        Class.forName("org.postgresql.Driver");
-        Connection db = DatabaseConnection.getConnection();
-        db.prepareStatement(query);
-        Statement statement = db.createStatement();
-        ResultSet results = statement.executeQuery(query);
-        System.out.println(!(!results.isBeforeFirst() && results.getRow() == 0));
-        printResultSet(results);
+//        String query = "SELECT * FROM users WHERE username = '{joe}' AND password = '{pass}' AND tier = '{Administrator}';";
+//        Class.forName("org.postgresql.Driver");
+//        Connection db = DatabaseConnection.getConnection();
+//        db.prepareStatement(query);
+//        Statement statement = db.createStatement();
+//        ResultSet results = statement.executeQuery(query);
+//        System.out.println(!(!results.isBeforeFirst() && results.getRow() == 0));
+//        printResultSet(results);
+        System.out.println(new BCryptPasswordEncoder().encode("password"));
     }
 }

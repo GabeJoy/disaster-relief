@@ -1,4 +1,4 @@
-package Security;
+package com.example.demo;
 
 import com.example.demo.Login;
 import org.springframework.security.core.GrantedAuthority;
@@ -38,9 +38,7 @@ public class UserDetailsImp implements UserDetails {
     }
 
     @Override
-    public String getUsername() {
-        return this.username;
-    }
+    public String getUsername() { return this.username;}
 
     @Override
     public boolean isAccountNonExpired() {

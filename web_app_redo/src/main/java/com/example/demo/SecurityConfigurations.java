@@ -1,28 +1,23 @@
-package Security;
+package com.example.demo;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableAutoConfiguration
+@EnableWebSecurity
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
-
-//    @Autowired
-//    DataSource dataSource;
-//
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication().dataSource(dataSource)
-//                .usersByUsernameQuery("select username,password from users where accounts=?")
-//                .authoritiesByUsernameQuery("select username, tier from accounts where username=?");
-//    }
 
     @Autowired
     UserDetailsService userDetailsService;
@@ -35,9 +30,21 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("Admin")
-                .antMatchers("user").hasAnyRole("{Admin}", "{Call Center Operator}", "{Donor}", "{Recipient}")
+                .antMatchers("/admin/**").hasAuthority("Administrator")
+                .antMatchers("/recipient/**").hasAnyAuthority("Administrator", "Recipient")
+                .antMatchers("/call-center-operator/**").hasAnyAuthority("Administrator", "Operator")
+                .antMatchers("/home").permitAll()
+                .antMatchers("/newuser").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login");
+                .formLogin()
+                .and()
+                .logout().permitAll();
     }
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
 }

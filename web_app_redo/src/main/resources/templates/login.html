@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Disaster Relief </title>
-    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap">
 </head>
 <body>
@@ -11,13 +11,13 @@ Please login with your username, password, and account tier:
     <div class="container"><label> User name: <input type="text" th:field="*{user}"/></label></div>
     <div class="container"><label> Password: <input type="password" th:field="*{pass}"/> </label></div>
 
-    <label for="tier"> Tier: </label>
-    <select name="tier" id="tier" th:required th:path="*{tier}">
-        <option value="Administrator" th:path="*{tier}">Administrator</option>
-        <option value="Call Center Operator" th:path="*{tier}">Call Center Operator</option>
-        <option value="Donor" th:path="*{tier}">Donor</option>
-        <option value="Recipient" th:path="*{tier}">Recipient</option>
-    </select>
+<!--    <label for="tier"> Tier: </label>-->
+<!--    <select name="tier" id="tier" th:required th:path="*{tier}">-->
+<!--        <option value="Administrator" th:path="*{tier}">Administrator</option>-->
+<!--        <option value="Call Center Operator" th:path="*{tier}">Call Center Operator</option>-->
+<!--        <option value="Donor" th:path="*{tier}">Donor</option>-->
+<!--        <option value="Recipient" th:path="*{tier}">Recipient</option>-->
+<!--    </select>-->
 <!--    <div><label><input type="radio" value="Administrator" name="tier" th:path="*{tier}">Administrator</label></div>-->
 <!--    <div><label><input type="radio" value="Call Center Operator" name="tier"th:path="*{tier}"> Call Center Operator</label></div>-->
 <!--    <div><label><input type="radio" value="Donor" name="tier" th:path="*{tier}"> Donor</label></div>-->
