@@ -1,16 +1,29 @@
 body {
-    font-family: Helvetica, arial, sans-serif;
-    font-size: 30px;
+    /*font-family: Helvetica, arial, sans-serif;*/
+    font-size: 50px;
     line-height: 1.6;
     background-color: white;
+    color: dodgerblue;
     padding: 30px;
-    color: #333;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: dodgerblue;
+
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+    font-family: 'Raleway', sans-serif;
 }
 form{
     font-family: 'Varela', sans-serif;
     font-size: 26px;
     width: 100px;
     height: 100px;
+}
+button {
+    height:30px;
+    width:100px;
+    border-radius: 5px;
+    border-color: dodgerblue;
 }
 div {
     width: 100px;

@@ -1,6 +1,6 @@
 package com.example.demo.Security;
 
-import com.example.demo.Login;
+import com.example.demo.Models.Login;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;

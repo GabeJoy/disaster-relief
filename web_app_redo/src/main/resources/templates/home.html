@@ -4,15 +4,20 @@
       xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-    <link href="/static/css/login.css" type="text/css" rel="stylesheet">
-    <title>Welcome Page</title>
+    <link href="/css/login.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <title>Home</title>
 </head>
 <body>
 <h1>Welcome!</h1>
-<div>
-    Disaster Relief
-</div>
-<a th:href = "@{/login}">Login</a>
+Disaster Relief - a platform for pledging and requesting resources in times of need.
+<br><button type="button" onclick="window.location.href = '/admin';"> Administrator </button>
+<br><button type="button" onclick="window.location.href = '/requester';"> Requester </button>
+<br><button type="button" onclick="window.location.href = '/recipient';"> Recipient </button>
+<br><button type="button" onclick="window.location.href = '/call-center-operator';"> Call Center Operator </button>
+<br><button type="button" onclick="window.location.href = '/login';"> Login </button>
+<br><button type="button" onclick="window.location.href = '/newuser';"> New USer </button>
+<!--<a th:href = "@{/login}">Login</a>-->
 </body>
 
 </html>

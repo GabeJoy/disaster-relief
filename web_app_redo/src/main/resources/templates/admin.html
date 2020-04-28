@@ -3,16 +3,18 @@
       xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-    <link href="/static/css/login.css" type="text/css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
     <title>Administrator</title>
 </head>
 <body>
 <h1> Welcome, Admin. </h1>
-<br><input type="button" onclick="window.location.href = '/admin/view-requests';" value="View Requests"/>
-<br><input type="button" onclick="window.location.href = '/admin/match-requests';" value="Process Requests"/>
-<form th:action = "@{/logout}" method = "post">
-    <input type = "submit" value = "Sign Out"/>
-</form>
+<button type="button" onclick="window.location.href = '/admin/view-requests';"> View Requests </button>
+<button type="button" onclick="window.location.href = '/admin/match-requests';"> Process Requests </button>
+<button type="button" onclick="window.location.href = '/logout';"> Sign Out </button>
+<!--<form th:action = "@{/logout}" method = "post">-->
+<!--    <input type = "submit" value = "Sign Out"/>-->
+<!--</form>-->
 </body>
 
 </html>

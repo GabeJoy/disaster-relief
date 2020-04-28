@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Models;
 
 public class Request {
     private String id;
@@ -25,5 +25,9 @@ public class Request {
 
     public String getAmount(){
         return this.amount;
+    }
+
+    public String getReason(){
+        return this.reason;
     }
 }

@@ -1,6 +1,6 @@
 package com.example.demo.Security;
 
-import com.example.demo.Login;
+import com.example.demo.Models.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

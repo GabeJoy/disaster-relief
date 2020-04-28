@@ -32,10 +32,11 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .antMatchers("/recipient/**").hasAnyAuthority("Administrator", "Recipient")
                 .antMatchers("/call-center-operator/**").hasAnyAuthority("Administrator", "Operator")
                 .antMatchers("/home").permitAll()
+                .antMatchers("/").permitAll()
                 .antMatchers("/newuser").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()//.loginPage("/login").permitAll()
+                .formLogin()
                 .and()
                 .logout().permitAll()
                 .and().csrf().disable();

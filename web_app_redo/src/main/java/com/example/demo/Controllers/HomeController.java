@@ -1,7 +1,7 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.DatabaseConnection;
-import com.example.demo.User;
+import com.example.demo.Models.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

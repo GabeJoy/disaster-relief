@@ -1,14 +1,12 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.DatabaseConnection;
-import com.example.demo.Request;
-import org.springframework.security.access.prepost.PreAuthorize;
+import com.example.demo.Models.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;

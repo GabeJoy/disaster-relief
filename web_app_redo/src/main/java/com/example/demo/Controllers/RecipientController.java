@@ -1,12 +1,11 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.DatabaseConnection;
-import com.example.demo.RequestItem;
+import com.example.demo.Models.RequestItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Controller
