@@ -2,6 +2,8 @@ package com.example.demo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseConnection {
 
@@ -44,7 +46,7 @@ public class DatabaseConnection {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        String query = "SELECT * FROM users WHERE username = '{joe}' AND password = '{pass}' AND tier = '{Administrator}';";
+//        String query = "SELECT * FROM users;";
 //        Class.forName("org.postgresql.Driver");
 //        Connection db = DatabaseConnection.getConnection();
 //        db.prepareStatement(query);
@@ -52,6 +54,19 @@ public class DatabaseConnection {
 //        ResultSet results = statement.executeQuery(query);
 //        System.out.println(!(!results.isBeforeFirst() && results.getRow() == 0));
 //        printResultSet(results);
-        System.out.println(new BCryptPasswordEncoder().encode("password"));
+
+        ResultSet results = DatabaseConnection.executeQuery("select * from requests");
+        ResultSetMetaData rsmd = results.getMetaData();
+        int columnsNumber = rsmd.getColumnCount();
+        List<Request> requests = new ArrayList<>();
+        while (results.next()) {
+            ArrayList<String> row = new ArrayList<>();
+            for (int i = 1; i <= columnsNumber; i++) {
+
+                row.add(results.getString(i));
+            }
+            requests.add(new Request(row.get(0), row.get(1), row.get(2), row.get(3), row.get(4)));
+        }
+       // System.out.println(new BCryptPasswordEncoder().encode("password"));
     }
 }

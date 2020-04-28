@@ -5,9 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-View Requests
-<form th:action = "@{/logout}" method = "post">
-    <input type = "submit" value = "Sign Out"/>
-</form>
+<h2>Pending Requests </h2>
+<table border="1">
+    <tr>
+        <th>Requester</th>
+        <th>Item</th>
+        <th>Amount</th>
+    </tr>
+    <tr th:each = "request: ${requests}">
+        <td th:text="${request.getRequester()}">vasile</td>
+        <td th:text="${request.getItem()}">45</td>
+        <td th:text="${request.getAmount()}">45</td>
+    </tr>
+</table>
 </body>
 </html>

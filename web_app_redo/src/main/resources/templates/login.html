@@ -10,7 +10,12 @@ Please login with your username, password, and account tier:
 <form th:object="${login}" th:method="post">
     <div class="container"><label> User name: <input type="text" th:field="*{user}"/></label></div>
     <div class="container"><label> Password: <input type="password" th:field="*{pass}"/> </label></div>
-
+    <div th:if="${param.error}" class="alert alert-error">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}" class="alert alert-success">
+        You have been logged out.
+    </div>
 <!--    <label for="tier"> Tier: </label>-->
 <!--    <select name="tier" id="tier" th:required th:path="*{tier}">-->
 <!--        <option value="Administrator" th:path="*{tier}">Administrator</option>-->

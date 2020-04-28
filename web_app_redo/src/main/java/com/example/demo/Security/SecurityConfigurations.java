@@ -1,6 +1,4 @@
-package com.example.demo;
-
-import javax.sql.DataSource;
+package com.example.demo.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -37,9 +35,10 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .antMatchers("/newuser").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin()//.loginPage("/login").permitAll()
                 .and()
-                .logout().permitAll();
+                .logout().permitAll()
+                .and().csrf().disable();
     }
 
     @Bean
