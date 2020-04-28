@@ -40,7 +40,7 @@ public class HomeController {
         if (goodUser){
             query = String.format("INSERT INTO users (\"first\", \"last\", \"username\", \"password\", \"tier\", \"email\", \"enabled\") VALUES ('%s', '%s', '%s', '%s', '%s', '%s', true)",user.getFirst(), user.getLast(), user.getUser(), new BCryptPasswordEncoder().encode(user.getPass()), user.getTier(), user.getEmail());
             DatabaseConnection.executeUpdate(query);
-            return "home";
+            return "/home";
         } else {
             return "login_error";
         }

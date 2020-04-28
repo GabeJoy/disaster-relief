@@ -25,7 +25,17 @@ public class AdminController {
 
     @GetMapping("/view-requests")
     public String viewRequests(Model model) throws SQLException {
-//        model.addAttribute("users", DatabaseConnection.executeQuery("select * from requests"));
+        model.addAttribute("requests", getRequests());
+        return "view-requests";
+    }
+
+    @GetMapping("/process-requests")
+    public String processRequests(Model model) throws SQLException {
+        model.addAttribute("requests", getRequests());
+        return "process-requests";
+    }
+
+    private List<Request> getRequests() throws SQLException {
         ResultSet results = DatabaseConnection.executeQuery("select * from requests");
         ResultSetMetaData rsmd = results.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
@@ -37,13 +47,7 @@ public class AdminController {
             }
             requests.add(new Request(row.get(0), row.get(1), row.get(2), row.get(3), row.get(4)));
         }
-        model.addAttribute("requests", requests);
 
-        return "view-requests";
-    }
-
-    @GetMapping("/match-requests")
-    public String matchRequests(){
-        return "match-requests";
+        return requests;
     }
 }

@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>New User</title>
-    <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
 </head>
-<script src = "/static/js/newuser.js"></script>
+<script src = "/js/newuser.js"></script>
 <body>
 Please enter the following information to create a new account:
-<form th:object="${user}" th:method="post" th:onsubmit="return checkFields(this) && checkPasswords(this)">
-    <div class="container"><label> First Name: <input type="text" name="first" th:field="*{first}" th:required/> </label></div>
-    <div class="container"><label> Last Name: <input type="text" name="last" th:field="*{last}" th:required/> </label></div>
-    <div class="container"><label> Username: <input type="text" name="user" th:field="*{user}" th:required/> </label></div>
-    <div class="container"><label> Password: <input type="password" name="password1" id="password1" th:field="*{pass}" th:required/> </label></div>
-    <div class="container"><label> Reenter Password: <input type="password" name="password2" id="password2" th:required/> </label></div>
-    <div class="container"><label> Email: <input type="text" name="email" th:field="*{email}" th:required/> </label></div>
+<form class = "form-horizontal" th:object="${user}" th:method="post" th:onsubmit="return checkFields(this) && checkPasswords(this)">
+    <label> First Name: <input type="text" name="first" th:field="*{first}" th:required/> </label>
+    <label> Last Name: <input type="text" name="last" th:field="*{last}" th:required/> </label>
+    <label> Username: <input type="text" name="user" th:field="*{user}" th:required/> </label>
+    <label> Password: <input type="password" name="password1" id="password1" th:field="*{pass}" th:required/> </label>
+    <label> Reenter Password: <input type="password" name="password2" id="password2" th:required/> </label>
+    <label> Email: <input type="text" name="email" th:field="*{email}" th:required/> </label>
 <!--    <div1><label><input type="radio" value="Call Center Operator" name="tier" th:path="*{tier}"> Call Center Operator</label></div1>-->
 <!--    <div1><label><input type="radio" value="Donor" name="tier" th:path="*{tier}"> Donor</label></div1>-->
 <!--    <div1><label><input type="radio" value="Recipient" name="tier" th:path="*{tier}"> Recipient</label></div1>-->
