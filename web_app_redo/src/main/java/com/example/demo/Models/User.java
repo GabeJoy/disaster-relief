@@ -8,17 +8,47 @@ public class User {
     private String pass;
     private String tier;
     private String email;
+    private String city;
+    private String state;
+    private String country;
 
-    public User(String first, String last, String username, String pass, String tier, String email){
+    public User(String first, String last, String username, String pass, String tier, String email, String city, String state, String country){
         this.first = first;
         this.last = last;
         this.username = username;
         this.pass = pass;
         this.tier = tier;
         this.email = email;
+        this.city = city;
+        this.state = state;
+        this.country = country;
     }
 
     public User(){}
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
     //getters
     public String getFirst() {return first;}

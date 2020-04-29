@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.DatabaseConnection;
 import com.example.demo.Models.Request;
+import com.example.demo.Models.Response;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,7 @@ public class AdminController {
     @GetMapping("/process-requests")
     public String processRequests(Model model) throws SQLException {
         model.addAttribute("requests", getRequests());
+        model.addAttribute("responses", getResponses());
         return "process-requests";
     }
 
@@ -49,5 +51,22 @@ public class AdminController {
         }
 
         return requests;
+    }
+
+    private List<Response> getResponses() throws SQLException {
+        String query = "select * from responses;";
+        ResultSet results = DatabaseConnection.executeQuery(query);
+        ResultSetMetaData rsmd = results.getMetaData();
+        int columnsNumber = rsmd.getColumnCount();
+        List<Response> responses = new ArrayList<>();
+        while (results.next()) {
+            ArrayList<String> row = new ArrayList<>();
+            for (int i = 1; i <= columnsNumber; i++) {
+                row.add(results.getString(i));
+            }
+            responses.add(new Response(row.get(0), row.get(1), row.get(2), Integer.parseInt(row.get(3)), row.get(4), row.get(5)));
+        }
+
+        return responses;
     }
 }

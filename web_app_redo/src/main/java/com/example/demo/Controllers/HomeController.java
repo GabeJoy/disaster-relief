@@ -28,8 +28,9 @@ public class HomeController {
     }
 
     @PostMapping(value = "/newuser")
-    public String addNewUser(@ModelAttribute User user, @RequestParam("tier") String tier) throws SQLException {
+    public String addNewUser(@ModelAttribute User user, @RequestParam("tier") String tier, @RequestParam("state") String state) throws SQLException {
         user.setTier(tier);
+        user.setState(state);
 
         //check if the username already exists
         String query = String.format("SELECT * FROM users WHERE username = '%s'", user.getUser());
@@ -38,9 +39,9 @@ public class HomeController {
 
         //if its a good username, insert new user into accounts
         if (goodUser){
-            query = String.format("INSERT INTO users (\"first\", \"last\", \"username\", \"password\", \"tier\", \"email\", \"enabled\") VALUES ('%s', '%s', '%s', '%s', '%s', '%s', true)",user.getFirst(), user.getLast(), user.getUser(), new BCryptPasswordEncoder().encode(user.getPass()), user.getTier(), user.getEmail());
+            query = String.format("INSERT INTO users (\"first\", \"last\", \"username\", \"password\", \"tier\", \"email\", \"enabled\", \"city\", \"state\", \"country\") VALUES ('%s', '%s', '%s', '%s', '%s', '%s', true, '%s', '%s', '%s')",user.getFirst(), user.getLast(), user.getUser(), new BCryptPasswordEncoder().encode(user.getPass()), user.getTier(), user.getEmail(), user.getCity(), user.getState(), user.getCountry());
             DatabaseConnection.executeUpdate(query);
-            return "/home";
+            return "successful-account-creation";
         } else {
             return "login_error";
         }

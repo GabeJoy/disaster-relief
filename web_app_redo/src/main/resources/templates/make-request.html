@@ -2,14 +2,13 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New User</title>
+    <title>Make A Request</title>
     <link href="/css/login.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
 </head>
 <script src = "/js/request_val.js"></script>
 <body>
-Let us know what you need:
-<form th:object="${request_item}" th:method="post" th:onsubmit="return checkFields(this)">
+<form th:object="${request_item}" th:method="post" th:onsubmit="return checkFields(this)" class = "form-horizontal">
     <label> Item: <input type="text" name="item" th:field="*{item_name}" th:required/> </label>
     <label for="quantity"> Quantity </label>
     <select id="quantity" th:required>

@@ -1,5 +1,5 @@
  function checkFields(form){
-        if (form.first.value === '' || form.last.value === '' || form.user.value === '' || form.password1.value === '' || form.password2.value === '' || form.email.value === ''){
+        if (form.first.value === '' || form.last.value === '' || form.user.value === '' || form.password1.value === '' || form.password2.value === '' || form.email.value === '' || form.city.value === '' || form.country.value === ''){
             alert("Required field missing!");
             return false;
         } else {

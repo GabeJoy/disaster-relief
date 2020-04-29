@@ -6,22 +6,98 @@
     <link href="/css/login.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
 </head>
+
+<script>
+    function findItems() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("pledge_query");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("pledges");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; //index 1 corresponds to 'item'
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function findRequests() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("item_requests");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("requests");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; //index 1 corresponds to 'item'
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
 <body>
+<div>
 <h2> Pending Requests </h2>
-<table border="1", cellpadding="10">
+<table id="requests" border="1" style="overflow-y:scroll;">
     <tr>
+        <th>ID</th>
         <th>Requester</th>
         <th>Item</th>
         <th>Amount</th>
         <th>Reason</th>
     </tr>
     <tr th:each = "request: ${requests}">
+        <td th:text="${request.getId()}"></td>
         <td th:text="${request.getRequester()}"></td>
         <td th:text="${request.getItem()}"></td>
         <td th:text="${request.getAmount()}"></td>
         <td th:text="${request.getReason()}"></td>
     </tr>
 </table>
-<button type="button" onclick="window.location.href = '/admin';"> Back To Home </button>
+
+<input type="text" id="item_requests" onkeyup="findRequests()" placeholder="Search for items..." th:height="300" th:size="30" >
+
+<h2> Pledges </h2>
+<table id="pledges" border="1" style="overflow-y:scroll;">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>City</th>
+        <th>State</th>
+    </tr>
+    <tr th:each = "response: ${responses}">
+        <td th:text="${response.getId()}"></td>
+        <td th:text="${response.getUsername()}"></td>
+        <td th:text="${response.getItem()}"></td>
+        <td th:text="${response.getAmount()}"></td>
+        <td th:text="${response.getCity()}"></td>
+        <td th:text="${response.getState()}"></td>
+    </tr>
+</table>
+
+<input type="text" id="pledge_query" onkeyup="findItems()" placeholder="Search for items..." th:height="300" th:size="30">
+
+<br><button type="button" onclick="window.location.href = '/admin';"> Back To Home </button>
+</div>
 </body>
 </html>

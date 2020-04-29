@@ -15,6 +15,8 @@ public class Request {
         this.amount = amount;
     }
 
+    public String getId(){ return this.id; }
+
     public String getRequester(){
         return this.requester;
     }
