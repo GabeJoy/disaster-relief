@@ -21,6 +21,11 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/403")
+    public String get403(){
+        return "403";
+    }
+
     @GetMapping(value = "/newuser")
     public String getNewUser(Model model){
         model.addAttribute("user", new User());
