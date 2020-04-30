@@ -47,7 +47,7 @@ public class AdminController {
             for (int i = 1; i <= columnsNumber; i++) {
                 row.add(results.getString(i));
             }
-            requests.add(new Request(row.get(0), row.get(1), row.get(2), row.get(3), row.get(4)));
+            requests.add(new Request(row.get(0), row.get(1), row.get(2), row.get(3), row.get(4), row.get(5), row.get(6), row.get(7)));
         }
 
         return requests;

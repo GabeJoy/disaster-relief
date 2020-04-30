@@ -55,18 +55,18 @@ public class DatabaseConnection {
 //        System.out.println(!(!results.isBeforeFirst() && results.getRow() == 0));
 //        printResultSet(results);
 
-        ResultSet results = DatabaseConnection.executeQuery("select * from requests");
-        ResultSetMetaData rsmd = results.getMetaData();
-        int columnsNumber = rsmd.getColumnCount();
-        List<Request> requests = new ArrayList<>();
-        while (results.next()) {
-            ArrayList<String> row = new ArrayList<>();
-            for (int i = 1; i <= columnsNumber; i++) {
-
-                row.add(results.getString(i));
-            }
-            requests.add(new Request(row.get(0), row.get(1), row.get(2), row.get(3), row.get(4)));
-        }
+//        ResultSet results = DatabaseConnection.executeQuery("select * from requests");
+//        ResultSetMetaData rsmd = results.getMetaData();
+//        int columnsNumber = rsmd.getColumnCount();
+//        List<Request> requests = new ArrayList<>();
+//        while (results.next()) {
+//            ArrayList<String> row = new ArrayList<>();
+//            for (int i = 1; i <= columnsNumber; i++) {
+//
+//                row.add(results.getString(i));
+//            }
+//            requests.add(new Request(row.get(0), row.get(1), row.get(2), row.get(3), row.get(4)));
+//        }
        // System.out.println(new BCryptPasswordEncoder().encode("password"));
     }
 }

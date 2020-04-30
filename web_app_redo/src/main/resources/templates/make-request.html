@@ -6,19 +6,28 @@
     <link href="/css/login.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
 </head>
-<script src = "/js/request_val.js"></script>
+<script>
+    function checkFields(){
+        const item = document.forms["request"]["item"];
+        const amount = document.forms["request"]["amount"];
+        const reason = document.forms["request"]["reason"];
+
+        if (item.value === '' || amount.value === '' || reason.value === ''){
+            alert("Required field missing!");
+            return false;
+        } else if (isNaN(amount.value) || amount.value <= 0){
+            alert("Nat a valid amount!");
+            return false;
+        }
+
+        return true;
+    }
+</script>
 <body>
-<form th:object="${request_item}" th:method="post" th:onsubmit="return checkFields(this)" class = "form-horizontal">
-    <label> Item: <input type="text" name="item" th:field="*{item_name}" th:required/> </label>
-    <label for="quantity"> Quantity </label>
-    <select id="quantity" th:required>
-        <option value="100-250">100-250</option>
-        <option value="250-500">250-500</option>
-        <option value="500-750">500-750</option>
-        <option value="750-1000">750-1000</option>
-        <option value="1000+">1000+</option>
-    </select>
-    <label> Reason: <input type="text" name="reason" th:field="*{reason_needed}" th:required th:maxlength="30"/> </label>
+<form th:name = "request" th:object="${request_item}" th:method="post" th:onsubmit="return checkFields() && confirm('Are you sure you want to make this request?')">
+    <label> Item: <input type="text" name="item" id="item" th:field="*{item}" th:required/> </label>
+    <label> Amount: <input type="text" name="amount" id="amount" th:field="*{amount}" th:required/> </label>
+    <label> Reason: <input type="text" name="reason" id="reason" th:field="*{reason}" th:required th:maxlength="30"/> </label>
     <br><input type="submit" value="Submit Request"/>
 </form>
 </body>
