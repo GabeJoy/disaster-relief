@@ -6,8 +6,11 @@ import com.example.demo.Models.Response;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -38,7 +41,7 @@ public class AdminController {
     }
 
     private List<Request> getRequests() throws SQLException {
-        ResultSet results = DatabaseConnection.executeQuery("select * from requests");
+        ResultSet results = DatabaseConnection.executeQuery("select * from requests;");
         ResultSetMetaData rsmd = results.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
         List<Request> requests = new ArrayList<>();
@@ -51,6 +54,18 @@ public class AdminController {
         }
 
         return requests;
+    }
+
+    @PostMapping("/process-requests")
+    public String makeMatch(@RequestParam("request_id") String request_id, @RequestParam("pledge_id") String pledge_id) throws SQLException {
+        ResultSet request_info = DatabaseConnection.executeQuery(String.format("select * from requests where 'id' = '%s'", request_id));
+        ResultSet pledge_info = DatabaseConnection.executeQuery(String.format("select * from responses where 'id' = '%s'", pledge_id));
+
+        if (DatabaseConnection.isEmptySet(request_info) || DatabaseConnection.isEmptySet(pledge_info)){
+            return "match-error";
+        } else {
+            return "match success";
+        }
     }
 
     private List<Response> getResponses() throws SQLException {

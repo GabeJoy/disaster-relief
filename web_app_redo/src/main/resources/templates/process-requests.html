@@ -51,10 +51,20 @@
             }
         }
     }
+
+    function checkFields(){
+        const request_id = document.forms["match"]["request_id"];
+        const pledge_id = document.forms["match"]["pledge_id"];
+
+        if (request_id.value === '' || pledge_id.value === ''){
+            alert("Required field missing!");
+            return false;
+        }
+        return true;
+    }
 </script>
 
 <body>
-<div>
 <h2> Pending Requests </h2>
 <table id="requests" border="1" style="overflow-y:scroll;">
     <tr>
@@ -63,6 +73,9 @@
         <th>Item</th>
         <th>Amount</th>
         <th>Reason</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
     </tr>
     <tr th:each = "request: ${requests}">
         <td th:text="${request.getId()}"></td>
@@ -70,6 +83,9 @@
         <td th:text="${request.getItem()}"></td>
         <td th:text="${request.getAmount()}"></td>
         <td th:text="${request.getReason()}"></td>
+        <td th:text="${request.getCity()}"></td>
+        <td th:text="${request.getState()}"></td>
+        <td th:text="${request.getCountry()}"></td>
     </tr>
 </table>
 
@@ -99,7 +115,13 @@
 
 <input type="text" id="pledge_query" onkeyup="findItems()" placeholder="Search for items..." th:height="300" th:size="30">
 
-<br><button type="button" onclick="window.location.href = '/admin';"> Back To Home </button>
-</div>
+<h3>Match two requests:</h3>
+<form th:name = "match" th:method="post" th:onsubmit="return checkFields() && confirm('Are you sure you want to make this match?')">
+    <label> Request ID: <input type="text" name="request_id" placeholder="Request ID" th:height="300" th:size="30"></label>
+    <label> Pledge ID: <input type="text" name="pledge_id" placeholder="Pledge ID" th:height="300" th:size="30"></label>
+    <br><input type="submit" value="Submit Request"/>
+</form>
+
+<br><button type="button" onclick="window.location.href = '/admin';"> Back To Admin Home </button>
 </body>
 </html>

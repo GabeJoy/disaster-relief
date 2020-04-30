@@ -14,12 +14,18 @@
         <th>Item</th>
         <th>Amount</th>
         <th>Reason</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
     </tr>
     <tr th:each = "request: ${requests}">
         <td th:text="${request.getRequester()}"></td>
         <td th:text="${request.getItem()}"></td>
         <td th:text="${request.getAmount()}"></td>
         <td th:text="${request.getReason()}"></td>
+        <td th:text="${request.getCity()}"></td>
+        <td th:text="${request.getState()}"></td>
+        <td th:text="${request.getCountry()}"></td>
     </tr>
 </table>
 <button type="button" onclick="window.location.href = '/admin';"> Back To Home </button>

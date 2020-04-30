@@ -55,6 +55,10 @@ public class Request {
 
     public void setRequester(String username){ this.requester = username; }
 
+    public void setItem(String item){
+        this.item = item;
+    }
+
     public String getItem(){
         return this.item;
     }
@@ -65,6 +69,10 @@ public class Request {
 
     public String getAmount(){
         return this.amount;
+    }
+
+    public void setReason(String reason){
+        this.reason = reason;
     }
 
     public String getReason(){
