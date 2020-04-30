@@ -7,14 +7,20 @@ public class Response {
     private int amount;
     private String city;
     private String state;
+    private String country;
 
-    public Response(String id, String username, String item, int amount, String city, String state){
+    public Response(String id, String username, String item, int amount, String city, String state, String country){
         this.id = id;
         this.username = username;
         this.item = item;
         this.amount = amount;
         this.city = city;
         this.state = state;
+        this.country = country;
+    }
+
+    public Response(){
+
     }
 
     public String getId() {
@@ -65,5 +71,7 @@ public class Response {
         this.state = state;
     }
 
+    public void setCountry(String country){this.country = country;}
 
+    public String getCountry(){ return this.country; }
 }

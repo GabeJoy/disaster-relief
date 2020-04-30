@@ -84,6 +84,7 @@
         <th>Amount</th>
         <th>City</th>
         <th>State</th>
+        <th>Country</th>
     </tr>
     <tr th:each = "response: ${responses}">
         <td th:text="${response.getId()}"></td>
@@ -92,6 +93,7 @@
         <td th:text="${response.getAmount()}"></td>
         <td th:text="${response.getCity()}"></td>
         <td th:text="${response.getState()}"></td>
+        <td th:text="${response.getCountry()}"></td>
     </tr>
 </table>
 

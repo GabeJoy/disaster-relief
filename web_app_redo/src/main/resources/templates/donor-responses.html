@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pending Requests</title>
+    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+<h2> Your Pledges </h2>
+<table id="pledges" border="1" style="overflow-y:scroll;">
+    <tr>
+        <th>ID</th>
+        <th>Item</th>
+        <th>Amount</th>
+    </tr>
+    <tr th:each = "response: ${responses}">
+        <td th:text="${response.getId()}"></td>
+        <td th:text="${response.getItem()}"></td>
+        <td th:text="${response.getAmount()}"></td>
+    </tr>
+</table>
+<form th:method="post" id="req_id" onsubmit="return confirm('Are you sure you want to expire this pledge?');">
+    <label> ID to Delete: <input type="text" name="response_id" placeholder="Pledge ID" th:required/> </label>
+    <br><input type="submit" value="Submit Request"/>
+</form>
+</body>
+</html>

@@ -64,7 +64,7 @@ public class AdminController {
             for (int i = 1; i <= columnsNumber; i++) {
                 row.add(results.getString(i));
             }
-            responses.add(new Response(row.get(0), row.get(1), row.get(2), Integer.parseInt(row.get(3)), row.get(4), row.get(5)));
+            responses.add(new Response(row.get(0), row.get(1), row.get(2), Integer.parseInt(row.get(3)), row.get(4), row.get(5), row.get(6)));
         }
 
         return responses;
