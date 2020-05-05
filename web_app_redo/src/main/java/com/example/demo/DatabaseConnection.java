@@ -18,7 +18,9 @@ public class DatabaseConnection {
         Connection db = DatabaseConnection.getConnection();
         db.prepareStatement(query);
         Statement statement = db.createStatement();
-        return statement.executeQuery(query);
+        ResultSet results = statement.executeQuery(query);
+        db.close();
+        return results;
     }
 
     public static void executeUpdate(String query) throws SQLException {
@@ -26,6 +28,7 @@ public class DatabaseConnection {
         db.prepareStatement(query);
         Statement statement = db.createStatement();
         statement.executeUpdate(query);
+        db.close();
     }
 
     public static void printResultSet(ResultSet results) throws SQLException {
@@ -42,7 +45,9 @@ public class DatabaseConnection {
     }
 
     public static boolean isEmptySet(ResultSet results) throws SQLException {
-        return (!results.isBeforeFirst() && results.getRow() == 0);
+        //return (!results.isBeforeFirst() && results.getRow() == 0);
+        //results.beforeFirst();
+        return !results.next();
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -68,5 +73,8 @@ public class DatabaseConnection {
 //            requests.add(new Request(row.get(0), row.get(1), row.get(2), row.get(3), row.get(4)));
 //        }
        // System.out.println(new BCryptPasswordEncoder().encode("password"));
+        ResultSet results = executeQuery("select * from responses where id = 11");
+        System.out.println(isEmptySet(results));
+        printResultSet(results);
     }
 }

@@ -48,7 +48,7 @@ public class Donor {
             for (int i = 1; i <= columnsNumber; i++) {
                 row.add(results.getString(i));
             }
-            responses.add(new Response(row.get(0), row.get(1), row.get(2), Integer.parseInt(row.get(3)), row.get(4), row.get(5), row.get(6)));
+            responses.add(new Response(row.get(0), row.get(1), row.get(2), Integer.parseInt(row.get(3)), row.get(4), row.get(5), row.get(6), row.get(7)));
         }
 
         return responses;
@@ -71,7 +71,7 @@ public class Donor {
         response.setState(donor_info.get(1));
         response.setCountry(donor_info.get(2));
 
-        String query = String.format("INSERT INTO responses (\"username\", \"item\", \"amount\", \"city\", \"state\", \"country\") VALUES ('%s', '%s', '%d', '%s', '%s', '%s')", response.getUsername(), response.getItem(), response.getAmount(), response.getCity(), response.getState(), response.getCountry());
+        String query = String.format("INSERT INTO responses (\"username\", \"item\", \"amount\", \"city\", \"state\", \"country\", \"description\") VALUES ('%s', '%s', '%d', '%s', '%s', '%s', '%s')", response.getUsername(), response.getItem(), response.getAmount(), response.getCity(), response.getState(), response.getCountry(), response.getDescription());
         DatabaseConnection.executeUpdate(query);
 
         return "successful-pledge";

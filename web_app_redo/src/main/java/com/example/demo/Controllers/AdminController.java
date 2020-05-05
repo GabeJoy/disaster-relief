@@ -14,7 +14,10 @@ import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -58,13 +61,28 @@ public class AdminController {
 
     @PostMapping("/process-requests")
     public String makeMatch(@RequestParam("request_id") String request_id, @RequestParam("pledge_id") String pledge_id) throws SQLException {
-        ResultSet request_info = DatabaseConnection.executeQuery(String.format("select * from requests where 'id' = '%s'", request_id));
-        ResultSet pledge_info = DatabaseConnection.executeQuery(String.format("select * from responses where 'id' = '%s'", pledge_id));
+        ResultSet request_info = DatabaseConnection.executeQuery(String.format("select * from requests where id = %d", Integer.parseInt(request_id)));
+        ResultSet pledge_info = DatabaseConnection.executeQuery(String.format("select * from responses where id = %d", Integer.parseInt(pledge_id)));
+
+        System.out.println(request_id + " " + pledge_id);
+//        DatabaseConnection.printResultSet(request_info);
+//        DatabaseConnection.printResultSet(pledge_info);
 
         if (DatabaseConnection.isEmptySet(request_info) || DatabaseConnection.isEmptySet(pledge_info)){
             return "match-error";
         } else {
-            return "match success";
+            String requester = request_info.getString(3);
+            String donor = pledge_info.getString(2);
+            String item = request_info.getString(2);
+            int amount = Integer.parseInt(pledge_info.getString(4));
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String date = dateFormat.format(new Date());
+
+            DatabaseConnection.executeUpdate(String.format("insert into transactions (\"recipient\", \"sender\", \"item\", \"amount\", \"date\") values ('%s', '%s', '%s', '%d', '%s')", requester, donor, item, amount, date));
+//            DatabaseConnection.executeUpdate(String.format("delete from requests where id = %d;", Integer.parseInt(request_info.getString(1))));
+//            DatabaseConnection.executeUpdate(String.format("delete from responses where id = %d;", Integer.parseInt(pledge_info.getString(1))));
+
+            return "match-success";
         }
     }
 
@@ -79,7 +97,7 @@ public class AdminController {
             for (int i = 1; i <= columnsNumber; i++) {
                 row.add(results.getString(i));
             }
-            responses.add(new Response(row.get(0), row.get(1), row.get(2), Integer.parseInt(row.get(3)), row.get(4), row.get(5), row.get(6)));
+            responses.add(new Response(row.get(0), row.get(1), row.get(2), Integer.parseInt(row.get(3)), row.get(4), row.get(5), row.get(6), row.get(7)));
         }
 
         return responses;

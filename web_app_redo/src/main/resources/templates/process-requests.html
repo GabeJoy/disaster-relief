@@ -18,7 +18,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1]; //index 1 corresponds to 'item'
+            td = tr[i].getElementsByTagName("td")[2]; //index 1 corresponds to 'item'
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -40,7 +40,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1]; //index 1 corresponds to 'item'
+            td = tr[i].getElementsByTagName("td")[2]; //index 1 corresponds to 'item'
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -98,6 +98,7 @@
         <th>Username</th>
         <th>Item</th>
         <th>Amount</th>
+        <th>Description</th>
         <th>City</th>
         <th>State</th>
         <th>Country</th>
@@ -107,6 +108,7 @@
         <td th:text="${response.getUsername()}"></td>
         <td th:text="${response.getItem()}"></td>
         <td th:text="${response.getAmount()}"></td>
+        <td th:text="${response.getDescription()}"></td>
         <td th:text="${response.getCity()}"></td>
         <td th:text="${response.getState()}"></td>
         <td th:text="${response.getCountry()}"></td>
@@ -115,13 +117,13 @@
 
 <input type="text" id="pledge_query" onkeyup="findItems()" placeholder="Search for items..." th:height="300" th:size="30">
 
+<br><button type="button" onclick="window.location.href = '/admin';"> Back To Admin Home </button>
+
 <h3>Match two requests:</h3>
 <form th:name = "match" th:method="post" th:onsubmit="return checkFields() && confirm('Are you sure you want to make this match?')">
     <label> Request ID: <input type="text" name="request_id" placeholder="Request ID" th:height="300" th:size="30"></label>
     <label> Pledge ID: <input type="text" name="pledge_id" placeholder="Pledge ID" th:height="300" th:size="30"></label>
     <br><input type="submit" value="Submit Request"/>
 </form>
-
-<br><button type="button" onclick="window.location.href = '/admin';"> Back To Admin Home </button>
 </body>
 </html>

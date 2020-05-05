@@ -8,8 +8,9 @@ public class Response {
     private String city;
     private String state;
     private String country;
+    private String description;
 
-    public Response(String id, String username, String item, int amount, String city, String state, String country){
+    public Response(String id, String username, String item, int amount, String city, String state, String country, String description){
         this.id = id;
         this.username = username;
         this.item = item;
@@ -17,10 +18,19 @@ public class Response {
         this.city = city;
         this.state = state;
         this.country = country;
+        this.description = description;
     }
 
     public Response(){
 
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getId() {

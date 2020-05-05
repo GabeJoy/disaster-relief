@@ -27,6 +27,7 @@ Enter pledge information:
 <form th:name="pledge" th:method="post" th:object="${response}" th:onsubmit="return checkFields() && confirm('Are you sure you want to make this pledge?')">
     <label> Item: <input type="text" name="first" id="first" th:field="*{item}" th:required/> </label>
     <label> Amount: <input type="text" name="amount" id="amount" th:field="*{amount}" th:required/> </label>
+    <label> Description: <input type="text" name="description" id="description" th:field="*{description}" placeholder="Provide a short description" th:required/> </label>
     <br><input type="submit" value="Make Pledge"/>
 </form>
 </body>

@@ -13,16 +13,21 @@
         <th>ID</th>
         <th>Item</th>
         <th>Amount</th>
+        <th>Description</th>
     </tr>
     <tr th:each = "response: ${responses}">
         <td th:text="${response.getId()}"></td>
         <td th:text="${response.getItem()}"></td>
         <td th:text="${response.getAmount()}"></td>
+        <td th:text="${response.getDescription()}"></td>
     </tr>
 </table>
 <form th:method="post" id="req_id" onsubmit="return confirm('Are you sure you want to expire this pledge?');">
     <label> ID to Delete: <input type="text" name="response_id" placeholder="Pledge ID" th:required/> </label>
     <br><input type="submit" value="Submit Request"/>
 </form>
+
+<br><button type="button" onclick="window.location.href = '/donor';"> Back To Donor Home </button>
+
 </body>
 </html>
